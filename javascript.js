@@ -44,7 +44,24 @@ window.addEventListener('scroll', () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+
+    // Optional: Toggle icon from bars to times (hamburger to X)
+    const icon = toggleBtn.querySelector('i');
+    if (navLinks.classList.contains('active')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+});
 
 
 
@@ -58,6 +75,7 @@ const items = [
   { name: "Latte", category: "Espresso", img: "pic5.jpg" },
   { name: "Macchiato", category: "Doppio", img: "pic5.jpg" },
   { name: "Long Black", category: "Black", img: "pic5.jpg" },
+  { name: "Black Coffee", category: "Black", img: "pic5.jpg" },
 ];
 
 const cardsContainer = document.querySelector(".cards");
@@ -67,7 +85,7 @@ const nextBtn = document.querySelector(".next");
 
 let currentCategory = "All";
 let currentPage = 1;
-const itemsPerPage = 3;
+const itemsPerPage = 4;
 
 function renderCards() {
   cardsContainer.classList.add("fade-out");

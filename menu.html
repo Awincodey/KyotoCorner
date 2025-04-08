@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KyotoCorner - Menu</title>
+  <link rel="stylesheet" href="menu.css"/>
+</head>
+<body>
+
+  <div class="menu-header">
+    <h1>Our Coffee Menu</h1>
+    <p>Brews that bring comfort, crafted with heart.</p>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hot">Hot</button>
+      <button class="filter-btn" data-filter="iced">Iced</button>
+      <button class="filter-btn" data-filter="special">Specialties</button>
+    </div>
+  </div>
+
+  <div class="menu-items">
+    <div class="menu-card hot">
+      <img src="pic5.jpg" alt="Latte">
+      <h3>Vanilla Latte</h3>
+      <p>Sweet vanilla with silky steamed milk & espresso.</p>
+      <div class="price">₱150</div>
+    </div>
+    <div class="menu-card hot">
+      <img src="pic5.jpg" alt="Americano">
+      <h3>Americano</h3>
+      <p>Bold espresso balanced with hot water – simple and strong.</p>
+      <div class="price">₱120</div>
+    </div>
+    <div class="menu-card hot">
+      <img src="pic5.jpg" alt="Cappuccino">
+      <h3>Cappuccino</h3>
+      <p>Rich espresso with frothed milk & a sprinkle of cocoa.</p>
+      <div class="price">₱140</div>
+    </div>
+    <div class="menu-card iced">
+      <img src="pic5.jpg" alt="Mocha">
+      <h3>Iced Mocha</h3>
+      <p>Choco-coffee bliss, served cold for a refreshing hit.</p>
+      <div class="price">₱160</div>
+    </div>
+    <div class="menu-card hot">
+      <img src="pic5.jpg" alt="Espresso">
+      <h3>Espresso Shot</h3>
+      <p>Strong, smooth, and energizing – for true coffee lovers.</p>
+      <div class="price">₱100</div>
+    </div>
+    <div class="menu-card special">
+      <img src="pic5.jpg" alt="Kyoto Special">
+      <h3>Kyoto Signature</h3>
+      <p>Our barista's blend of tradition and bold flavors.</p>
+      <div class="price">₱180</div>
+    </div>
+    <div class="menu-card iced">
+      <img src="pic5.jpg" alt="Kyoto Special">
+      <h3>Kyoto</h3>
+      <p>Our barista's blend of tradition and bold flavors.</p>
+      <div class="price">₱180</div>
+    </div>
+    <div class="menu-card special">
+      <img src="pic5.jpg" alt="Kyoto Special">
+      <h3>Kyoto</h3>
+      <p>Our barista's blend of tradition and bold flavors.</p>
+      <div class="price">₱180</div>
+    </div>
+    <div class="menu-card special">
+      <img src="pic5.jpg" alt="Kyoto Special">
+      <h3>Kyoto</h3>
+      <p>Our barista's blend of tradition and bold flavors.</p>
+      <div class="price">₱180</div>
+    </div>
+    <div class="menu-card special">
+      <img src="pic5.jpg" alt="Kyoto Special">
+      <h3>Kyoto</h3>
+      <p>Our barista's blend of tradition and bold flavors.</p>
+      <div class="price">₱180</div>
+    </div>
+    
+  </div>
+
+  <div class="back-home">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <script>
+    // FILTERING
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const menuCards = document.querySelectorAll(".menu-card");
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+        menuCards.forEach(card => {
+  if (filter === "all" || card.classList.contains(filter)) {
+    card.classList.remove("hidden");
+    card.classList.add("fade-in");
+  } else {
+    card.classList.add("hidden");
+    card.classList.remove("fade-in");
+  }
+});
+      });
+    });
+
+    // BACK BUTTON ANIMATION
+    const backBtn = document.querySelector(".back-btn");
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      backBtn.classList.add("clicked");
+      setTimeout(() => {
+        window.location.href = backBtn.getAttribute("href");
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>

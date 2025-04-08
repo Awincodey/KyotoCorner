@@ -21,7 +21,7 @@
     padding: 1rem 2rem;
     border-bottom: 1px solid #fff2;
     position: fixed;
-  width: 100%;
+    width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -82,13 +82,84 @@ nav ul li a:hover {
     border-radius: 4px;
   }
 
+  nav .actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
   
+  /* Style for the social icons (Facebook & Instagram) */
+  nav .actions .social-icon {
+    color: white;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
   
+  nav .actions .social-icon:hover {
+    color: #f5e5cc; /* subtle warm hover tone */
+  }
+
+  
+  /* Hide menu on small screens */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  
+
+}
+
+/* Show toggle on small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(28, 18, 11, 0.8); /* Semi-transparent dark background */
+    backdrop-filter: blur(10px);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .nav-links.active {
+    display: flex;
+
+  }
+
+  .menu-toggle {
+    display: inline;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    flex: 1 1 auto;
+  }
+}
   .hero {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 4rem 2rem;
+    padding-top: 10%;
     
   }
   
@@ -125,8 +196,19 @@ nav ul li a:hover {
   .order-btn {
     background-color: white;
     color: #1c120b;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-decoration: none;
   }
   
+  .order-btn:hover {
+    background-color: #f5e5cc;
+    color: #1c120b;
+  }
   .explore-btn {
     background-color: transparent;
     border: 1px solid white;
@@ -134,9 +216,59 @@ nav ul li a:hover {
   }
 
   .hero-img img {
-    width: 600px;
+    width: 700px;
     padding-top: 50px;
+    padding-left: 0%;
   }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 5rem 1rem 2rem;
+      align-items: center;
+    }
+  
+    .hero-img {
+      order: -1; /* Move image to top */
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding-left: 4rem;
+    }
+  
+    .hero-img img {
+      width: 100%;
+      max-width: 280px;
+      padding: 1rem 0;
+    }
+  
+    .hero-text {
+      max-width: 100%;
+      padding: 0 1.5rem;
+    }
+  
+    .hero-text h1 {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+  
+    .hero-text p {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .hero-text .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .order-btn {
+      width: 80%;
+      font-size: 1rem;
+    }
+  }
+
   
   /* Stats section styles */
 .stats {
@@ -189,26 +321,38 @@ nav ul li a:hover {
   #num3 {
     color: #ccc;
   }
-  
+
   @media (max-width: 768px) {
-    .hero {
+    .stats {
       flex-direction: column;
+      gap: 1.5rem;
+      padding: 20px;
+      margin: 50px 20px;
       text-align: center;
     }
   
-    .hero-text {
-      max-width: 100%;
+    .stat {
+      font-size: 1.2em;
     }
   
-    .hero-img img {
-      margin-top: 2rem;
-      width: 250px;
+    #num1, #num2, #num3 {
+      font-size: 2em;
     }
   
-    nav ul {
-      display: none;
+    .label {
+      font-size: 0.95em;
     }
   }
+  @media (max-width: 480px) {
+    .stat {
+      font-size: 1em;
+    }
+  
+    #num1, #num2, #num3 {
+      font-size: 1.5em;
+    }
+  }
+  
   
   /* 2nd section */
 
@@ -282,6 +426,11 @@ nav ul li a:hover {
     .coffee-box {
       flex-direction: column;
       text-align: center;
+      
+    }
+
+    .coffee-section {
+      padding-bottom: 5px;
     }
   
     .coffee-box.reverse {
@@ -295,6 +444,7 @@ nav ul li a:hover {
   
     .coffee-text {
       margin-top: 1rem;
+      padding-left: 0;
     }
   
     .coffee-text h2 {
@@ -376,6 +526,8 @@ nav ul li a:hover {
     text-align: center;
     padding-bottom: 1rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    opacity: 1;
 }
 
 .card img {
